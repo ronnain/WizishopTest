@@ -22,10 +22,22 @@ export class BasketService {
         }
         let quantity = 0;
         basket.forEach(item => {
-            quantity = quantity + item.quantity;
+            quantity += item.quantity;
         });
         return quantity;
   }
+
+  getTotalBasket(): number {
+    const basket = this.getBasket();
+    if(!basket || !basket.length) {
+        return;
+    }
+    let total = 0;
+    basket.forEach(item => {
+      total += item.quantity * item.price;
+    });
+    return total;
+}
 
   addProductToBasket(product: Product) {
     let basket = this.getBasket();

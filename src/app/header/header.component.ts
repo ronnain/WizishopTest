@@ -42,5 +42,8 @@ export class HeaderComponent implements OnInit {
     this.basket = this.basketService.getBasket();
   }
 
+  getTotal(): number {
+    return this.basketService.getTotalBasket();
+  }
 
 }
