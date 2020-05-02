@@ -55,7 +55,7 @@
             </a>
           </li>
         </ul>
-        <p class="nav-link">Total panier : <span class="totalProduct">{{getTotal()}}</span> €</p>
+        <p class="nav-link">Total panier : <span class="totalProduct">{{basketTotal ? basketTotal : 0}}</span> €</p>
         <button mat-flat-button color="primary" class="nav-link" routerLink="panier">Voir Panier</button>
       </mat-menu>
 

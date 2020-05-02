@@ -11,7 +11,7 @@ export class BasketUpdate {
     }
 
     addProduct(index?: number) {
-        const product = index ? this.products[index]: this.product;
+        const product = typeof index === 'number' ? this.products[index]: this.product;
 
         if(!product.quantity) {
           product.quantity = 0;

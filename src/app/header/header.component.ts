@@ -10,6 +10,7 @@ import { Product } from '../interfaces';
 export class HeaderComponent implements OnInit {
 
   basketQuantity: number;
+  basketTotal: number;
   basket: Product[];
 
   bigScreen;
@@ -21,11 +22,13 @@ export class HeaderComponent implements OnInit {
     this.bigScreen = screen.width >= this.bigScreenLimit;
     this.getBasketQuantity();
     this.getBasket();
+    this.getTotal();
 
     // Subscribe to event when the user update the basket
     this.basketService.updateBasketEvent.subscribe((data:string) => {
       this.getBasketQuantity();
       this.getBasket();
+      this.getTotal();
     });
   }
 
@@ -42,8 +45,8 @@ export class HeaderComponent implements OnInit {
     this.basket = this.basketService.getBasket();
   }
 
-  getTotal(): number {
-    return this.basketService.getTotalBasket();
+  getTotal() {
+    this.basketTotal =  this.basketService.getTotalBasket();
   }
 
 }
