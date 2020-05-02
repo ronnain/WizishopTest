@@ -1,0 +1,16 @@
+a{
+    color: black;
+}
+
+.active{
+    border: 2px solid;
+    border-color: midnightblue;
+}
+
+nav{
+    font-family: 'Roboto Mono', monospace;
+}
+
+.basketMargin {
+    margin-left: 1rem;
+}

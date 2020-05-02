@@ -1,0 +1,42 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-2">
+      One of three columns
+    </div>
+
+    <div class="col-lg d-flex p-2 flex-wrap justify-content-center">
+
+      <div class="card cardProduct" *ngFor="let product of products; let index = index;">
+        <img class="card-img-top" src="{{product.imgPath}}" alt="Card image cap">
+        <div class="card-body">
+          <p class="card-title">{{product.name}}</p>
+          <p class="card-text">{{product.desc}}</p>
+          <div class="centerAlign">
+            <p class="price">{{product.price | currency:'EUR'}}</p>
+          </div>
+
+          <div class="rightAlign">
+            <div *ngIf="!product.quantity">
+              <button mat-mini-fab color="primary" aria-label="Ajouter au panier" (click)="addProduct(index)">
+                <mat-icon>add_shopping_cart</mat-icon>
+              </button>
+            </div>
+            <div *ngIf="product.quantity">
+              <button mat-icon-button aria-label="Diminuer" (click)="removeProduct(index)">
+                <mat-icon>remove</mat-icon>
+              </button>
+              <p class="quantity">{{product.quantity}}</p>
+              <button mat-icon-button aria-label="Ajouter" (click)="addProduct(index)">
+                <mat-icon>add</mat-icon>
+              </button>
+            </div>
+          </div>
+
+          <div class="centerAlign" *ngIf="product.quantity">
+            <p class="cardComment"><mat-icon>done</mat-icon> Déjà {{product.quantity}} dans votre panier.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

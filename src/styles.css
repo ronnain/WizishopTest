@@ -1,1 +1,186 @@
 /* You can add global styles to this file, and also import other style files */
+html, body { height: 100%; }
+body {
+    background-color: white;
+    font-family: 'Raleway', sans-serif;
+}
+
+hr{
+    width: 95%;
+}
+
+a {
+    color: midnightblue;
+}
+
+.no-border{
+    border: none;
+}
+
+.card-header{
+    color: white;
+    background-color: midnightblue;
+    margin-bottom: 1em;
+}
+
+.center{
+    margin:auto;
+}
+
+.alignCenter {
+    text-align: center;
+}
+
+.midnightblue {
+    color: white;
+    background-color: midnightblue;
+}
+
+.btn:disabled{
+    cursor: not-allowed;
+}
+.mat-tab-group{
+    font-family: 'Raleway', sans-serif;
+}
+
+.transparent{
+    background-color: transparent;
+}
+
+.verticalSpace {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.blueColor {
+    color: midnightblue;
+}
+
+.article {
+    text-align: justify;
+}
+
+.article h1, h2, h3{
+    font-weight: 600;
+    line-height: 1em;
+    color: #383838;
+}
+
+.article h1{
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+
+.article h2{
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.article h3{
+    font-size: 1.25rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.article .citation{
+    text-align: center;
+    font-style: italic;
+    font-weight: 550;
+}
+
+.article p{
+    white-space: pre-wrap;
+}
+
+.article img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1rem;
+    max-width: 100%;
+}
+
+.article .fullWidth {
+    width: 100%;
+}
+
+.article .noMarginBottom {
+    margin-bottom: 0;
+}
+
+.titleBottomLine{
+    margin-top: 3rem;
+    border-bottom: 1px solid rgba(0,0,0,.125);
+    padding-bottom: 0.5rem;
+}
+
+.noMarginBottom {
+    margin-bottom: 0;
+}
+
+
+.backgroundFeather {
+    max-height: 100%;
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+@media screen and (max-width: 575px) and (orientation : portrait) {
+    .backgroundFeather {
+        background-image: url('https://sommeilprofond.fr/sleeping-bs/img/white_feather/m.jpg');
+        margin-bottom: 60rem;
+    }
+}
+@media screen and (min-width: 576px) and (max-width: 767px) and (orientation : portrait) {
+    .backgroundFeather {
+        background-image: url('https://sommeilprofond.fr/sleeping-bs/img/white_feather/xm.jpg');
+        margin-bottom: 40rem;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px) and (orientation : portrait) {
+    .backgroundFeather {
+        background-image: url('https://sommeilprofond.fr/sleeping-bs/img/white_feather/l.jpg');
+        margin-bottom: 30rem;
+    }
+}
+
+@media screen and (min-width: 992px) and (orientation : portrait) {
+    .backgroundFeather {
+        background-image: url('https://sommeilprofond.fr/sleeping-bs/img/white_feather/xl.jpg');
+        margin-bottom: 20rem;
+    }
+}
+
+/* Landscape */
+
+@media screen and (max-width: 575px) and (orientation : landscape) {
+    .backgroundFeather {
+        background-image: url('https://sommeilprofond.fr/sleeping-bs/img/white_feather/m.jpg');
+        margin-bottom: 68rem;
+    }
+}
+@media screen and (min-width: 576px) and (max-width: 767px) and (orientation : landscape) {
+    .backgroundFeather {
+        background-image: url('https://sommeilprofond.fr/sleeping-bs/img/white_feather/xm.jpg');
+        margin-bottom: 58rem;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px) and (orientation : landscape) {
+    .backgroundFeather {
+        background-image: url('https://sommeilprofond.fr/sleeping-bs/img/white_feather/l.jpg');
+        margin-bottom: 45rem;
+    }
+}
+
+@media screen and (min-width: 992px) and (orientation : landscape) {
+    .backgroundFeather {
+        background-image: url('https://sommeilprofond.fr/sleeping-bs/img/white_feather/xl.jpg');
+        margin-bottom: 40rem;
+    }
+}

@@ -1,0 +1,54 @@
+<nav class="navbar navbar-expand-sm navbar-white justify-content-center bg-white">
+
+    <a class="navbar-brand" routerLink="">
+      Boutique du <span class="blueColor">Sommeil</span>
+    </a>
+    <a class="navbar-brand" routerLink="">
+      <img src="assets/logo/zzzLogo.png" alt="Logo ZZZ Sommeil Profond" width="50px" />
+    </a>
+
+    <!-- Display only on small size -->
+    <button mat-button [matMenuTriggerFor]="menu" *ngIf="!bigScreen">
+      <span class="material-icons">menu</span>
+    </button>
+    <mat-menu #menu="matMenu" xPosition="before">
+      <a routerLink="" class="nav-link">Accueil</a>
+      <a routerLink="produits/oreillers" class="nav-link">Oreillers</a>
+      <a routerLink="produits/lits" class="nav-link">Lits</a>
+      <a routerLink="produits/huiles" class="nav-link">Huiles</a>
+      <a routerLink="produits" class="nav-link">Tous</a>
+    </mat-menu>
+
+    <div id="bigScreenMenu" *ngIf="bigScreen">
+      <ul class="nav">
+        <li class="nav-item" routerLinkActive="active">
+          <a routerLink="produits/oreillers" class="nav-link">Oreillers</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+          <a routerLink="produits/lits" class="nav-link">Lits</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+          <a routerLink="produits/huiles" class="nav-link">Huiles</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+          <a routerLink="produits" class="nav-link">Tous</a>
+        </li>
+      </ul>
+    </div>
+    <div class="basketMargin">
+      <button mat-button [matMenuTriggerFor]="basket">
+        <mat-icon [matBadge]="basketQuantity" matBadgePosition="above after" matBadgeColor="warn">
+          <span class="material-icons">
+            shopping_cart
+          </span>
+        </mat-icon>
+      </button>
+
+      <mat-menu #basket="matMenu" xPosition="before" class="alignCenter">
+
+        <button mat-flat-button color="primary" class="nav-link"  routerLink="panier">Voir Panier</button>
+      </mat-menu>
+
+    </div>
+  </nav>
+  <hr style="margin-top:0px;">
