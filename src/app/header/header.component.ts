@@ -1,5 +1,6 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { BasketService } from '../services/basket.service';
+import { Product } from '../interfaces';
 
 @Component({
   selector: 'app-header',
@@ -8,7 +9,9 @@ import { BasketService } from '../services/basket.service';
 })
 export class HeaderComponent implements OnInit {
 
-  basketQuantity;
+  basketQuantity: number;
+  basket: Product[];
+
   bigScreen;
   bigScreenLimit = 768;
 
@@ -17,9 +20,12 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
     this.bigScreen = screen.width >= this.bigScreenLimit;
     this.getBasketQuantity();
+    this.getBasket();
 
+    // Subscribe to event when the user update the basket
     this.basketService.updateBasketEvent.subscribe((data:string) => {
       this.getBasketQuantity();
+      this.getBasket();
     });
   }
 
@@ -30,6 +36,10 @@ export class HeaderComponent implements OnInit {
 
   getBasketQuantity() {
     this.basketQuantity = this.basketService.getQuantitySelected();
+  }
+
+  getBasket() {
+    this.basket = this.basketService.getBasket();
   }
 
 

@@ -20,18 +20,6 @@
     font-weight: 300;
 }
 
-.quantity {
-    display: inline;
-}
-
-.centerAlign {
-    text-align:center;
-}
-
-.price {
-    font-size: 1.5rem;
-}
-
-.cardComment {
-    color: limegreen;
+.pointer {
+    cursor: pointer;
 }

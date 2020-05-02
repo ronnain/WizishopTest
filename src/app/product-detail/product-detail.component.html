@@ -1,1 +1,60 @@
-<p>product-detail works!</p>
+
+<div class="alignCenter">
+    <h1>{{product.name}}</h1>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-md">
+        <img class="card-img-top pointer" [src]="product.imgPath" [alt]="product.name">
+      </div>
+
+      <div class="col-md justify-content-center spaceChild">
+        <div class="alignCenter">
+          <p>{{product.desc}}</p>
+          <p class="price">{{product.price | currency:'EUR'}}</p>
+        </div>
+        <div class="alignCenter">
+            <div *ngIf="!product.quantity">
+              <button mat-mini-fab color="primary" aria-label="Ajouter au panier" (click)="addProduct()">
+                <mat-icon>add_shopping_cart</mat-icon>
+              </button>
+            </div>
+            <div *ngIf="product.quantity" class="inlineChild">
+              <button mat-icon-button aria-label="Diminuer" (click)="removeProduct()">
+                <mat-icon>remove</mat-icon>
+              </button>
+              <p>{{product.quantity}}</p>
+              <button mat-icon-button aria-label="Ajouter" (click)="addProduct()">
+                <mat-icon>add</mat-icon>
+              </button>
+              <p>Total : <span class="totalProduct">{{product.quantity * product.price}}</span> €</p>
+            </div>
+        </div>
+        <div class="alignCenter" *ngIf="product.quantity">
+          <p class="basketComment"><mat-icon>done</mat-icon> Déjà {{product.quantity}} dans votre panier.</p>
+        </div>
+
+
+        <mat-accordion class="extendPanel">
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Description du produit
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <p>{{productDetail ? productDetail.detailDesc : "Ce produit ne contient pas de description."}}</p>
+          </mat-expansion-panel>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Fiche technique
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <p>{{productDetail ? productDetail.technicalData : "Ce produit ne contient pas de fiche technique."}}</p>
+          </mat-expansion-panel>
+        </mat-accordion>
+
+      </div>
+    </div>
+</div>

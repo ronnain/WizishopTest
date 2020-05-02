@@ -9,7 +9,7 @@ import { BasketDetailComponent } from './basket-detail/basket-detail.component';
 const routes: Routes = [
   {path: 'produits', component: ProductsComponent},
   {path: 'produits/:categorie', component: ProductsComponent},
-  {path: 'produits/:categorie/:name', component: ProductDetailComponent},
+  {path: 'produits/:categorie/:idProduct', component: ProductDetailComponent},
   {path: 'panier', component: BasketDetailComponent},
   {path: '', component: HomeComponent },
   {path: '**', redirectTo: '', pathMatch: 'full'},

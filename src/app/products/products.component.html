@@ -7,11 +7,11 @@
     <div class="col-lg d-flex p-2 flex-wrap justify-content-center">
 
       <div class="card cardProduct" *ngFor="let product of products; let index = index;">
-        <img class="card-img-top" src="{{product.imgPath}}" alt="Card image cap">
+        <img class="card-img-top pointer" [src]="product.imgPath" [alt]="product.name" routerLink="/produits/{{product.categories[0]}}/{{product.id}}">
         <div class="card-body">
           <p class="card-title">{{product.name}}</p>
           <p class="card-text">{{product.desc}}</p>
-          <div class="centerAlign">
+          <div class="alignCenter">
             <p class="price">{{product.price | currency:'EUR'}}</p>
           </div>
 
@@ -21,19 +21,20 @@
                 <mat-icon>add_shopping_cart</mat-icon>
               </button>
             </div>
-            <div *ngIf="product.quantity">
+            <div *ngIf="product.quantity" class="inlineChild">
               <button mat-icon-button aria-label="Diminuer" (click)="removeProduct(index)">
                 <mat-icon>remove</mat-icon>
               </button>
-              <p class="quantity">{{product.quantity}}</p>
+              <p>{{product.quantity}}</p>
               <button mat-icon-button aria-label="Ajouter" (click)="addProduct(index)">
                 <mat-icon>add</mat-icon>
               </button>
+              <p>Total : <span class="totalProduct">{{product.quantity * product.price}}</span> €</p>
             </div>
           </div>
 
-          <div class="centerAlign" *ngIf="product.quantity">
-            <p class="cardComment"><mat-icon>done</mat-icon> Déjà {{product.quantity}} dans votre panier.</p>
+          <div class="alignCenter" *ngIf="product.quantity">
+            <p class="basketComment"><mat-icon>done</mat-icon> Déjà {{product.quantity}} dans votre panier.</p>
           </div>
         </div>
       </div>

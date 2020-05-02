@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Product } from '../interfaces';
-import { PRODUCTS } from '../mock/products';
+import { Product, ProductDetail } from '../interfaces';
+import { PRODUCTS, PROUCTS_DETAILS } from '../mock/products';
 import { BasketService } from './basket.service';
 import { SUtils } from '../utils';
 
@@ -9,11 +9,13 @@ import { SUtils } from '../utils';
 })
 export class ProductsService {
 
-  products : Product[] = PRODUCTS;
+  products : Product[];
 
   constructor(private basketService: BasketService) { }
 
+  // To do: observables
   getAllProducts(): Product[] {
+    this.products = PRODUCTS;
     const basket = this.basketService.getBasket();
 
     // retrieve the basket from previous sessions
@@ -24,6 +26,15 @@ export class ProductsService {
       }
     }
     return this.products;
+  }
+
+  // To do: observables
+  getProductById(id: number): Product {
+    return SUtils.findElemInList('id', id, PRODUCTS);
+  }
+
+  getProductDetail(idProduct: number): ProductDetail {
+    return SUtils.findElemInList('idProduct', idProduct, PROUCTS_DETAILS);
   }
 
 

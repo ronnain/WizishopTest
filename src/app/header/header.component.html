@@ -36,7 +36,7 @@
       </ul>
     </div>
     <div class="basketMargin">
-      <button mat-button [matMenuTriggerFor]="basket">
+      <button mat-button [matMenuTriggerFor]="basketMenu">
         <mat-icon [matBadge]="basketQuantity" matBadgePosition="above after" matBadgeColor="warn">
           <span class="material-icons">
             shopping_cart
@@ -44,8 +44,17 @@
         </mat-icon>
       </button>
 
-      <mat-menu #basket="matMenu" xPosition="before" class="alignCenter">
-
+      <mat-menu #basketMenu="matMenu" xPosition="before" class="alignCenter">
+        <div *ngIf="!basketQuantity">
+          <p class="nav-link">Votre panier est vide</p>
+        </div>
+        <ul class="navbasket">
+          <li class="nav-item" *ngFor="let item of basket; let index = index;">
+            <a routerLink="/produits/{{item.categories[0]}}/{{item.id}}" class="nav-link">
+              <span class="menuItemName">{{item.name}}</span> x{{item.quantity}} : {{item.quantity * item.price}} €
+            </a>
+          </li>
+        </ul>
         <button mat-flat-button color="primary" class="nav-link"  routerLink="panier">Voir Panier</button>
       </mat-menu>
 

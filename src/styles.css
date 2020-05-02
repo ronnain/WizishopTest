@@ -56,44 +56,40 @@ a {
     color: midnightblue;
 }
 
-.article {
-    text-align: justify;
-}
-
-.article h1, h2, h3{
+h1, h2, h3{
     font-weight: 600;
     line-height: 1em;
     color: #383838;
 }
 
-.article h1{
+h1{
     font-size: 2rem;
     margin-bottom: 2rem;
 }
 
-.article h2{
+h2{
     font-size: 1.5rem;
     margin-top: 2rem;
     margin-bottom: 2rem;
 }
 
-.article h3{
+h3{
     font-size: 1.25rem;
     margin-top: 1rem;
     margin-bottom: 1rem;
 }
 
-.article .citation{
+.citation{
     text-align: center;
     font-style: italic;
     font-weight: 550;
 }
 
-.article p{
+ p{
     white-space: pre-wrap;
 }
 
-.article img{
+img{
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -101,11 +97,11 @@ a {
     max-width: 100%;
 }
 
-.article .fullWidth {
+.fullWidth {
     width: 100%;
 }
 
-.article .noMarginBottom {
+.noMarginBottom {
     margin-bottom: 0;
 }
 
@@ -119,6 +115,22 @@ a {
     margin-bottom: 0;
 }
 
+.inlineChild *{
+    display: inline;
+}
+
+.price {
+    font-size: 1.5rem;
+}
+
+.totalProduct {
+    font-weight: bold;
+    font-size: 1.25rem;
+}
+
+.basketComment {
+    color: limegreen;
+}
 
 .backgroundFeather {
     max-height: 100%;

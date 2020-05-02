@@ -7,3 +7,10 @@ export interface Product {
     categories: string[];
     imgPath: string;
 }
+
+export interface ProductDetail {
+    id: number;
+    idProduct: number; // foreign key of product
+    detailDesc: string;
+    technicalData: string;
+}
