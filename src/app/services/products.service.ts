@@ -19,6 +19,22 @@ export class ProductsService {
   // To do: observables
   getAllProducts(): Product[] {
     this.products = PRODUCTS;
+    this.getBasketUpdate();
+    return this.products;
+  }
+
+  // To do: observables
+  getProductById(id: number): Product {
+    // Call getAllProcts, will update the products quantity with the current basket
+    this.getAllProducts();
+    return SUtils.findElemInList('id', id, this.products);
+  }
+
+  getProductDetail(idProduct: number): ProductDetail {
+    return SUtils.findElemInList('idProduct', idProduct, PROUCTS_DETAILS);
+  }
+
+  getBasketUpdate() {
     const basket = this.basketService.getBasket();
 
     // retrieve the basket from previous sessions
@@ -28,21 +44,5 @@ export class ProductsService {
         foundProduct.quantity = item.quantity;
       }
     }
-    return this.products;
   }
-
-  // To do: observables
-  getProductById(id: number): Product {
-    // when the page is displayed after refresh
-    if (!this.products) {
-      this.getAllProducts();
-    }
-    return SUtils.findElemInList('id', id, this.products);
-  }
-
-  getProductDetail(idProduct: number): ProductDetail {
-    return SUtils.findElemInList('idProduct', idProduct, PROUCTS_DETAILS);
-  }
-
-
 }

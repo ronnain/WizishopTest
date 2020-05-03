@@ -30,8 +30,8 @@ export class BasketUpdate {
     removeAllSameProduct(index?: number) {
       if(typeof index !== 'number'){
         const basket = this.basketService.getBasket();
-        index = basket.findIndex(item => item.id === this.product.id);
 
+        index = basket.findIndex(item => item.id === this.product.id);
         this.product.quantity = undefined;
       }
       this.basketService.removeProductByIndex(index);

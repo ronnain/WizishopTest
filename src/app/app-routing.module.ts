@@ -7,7 +7,7 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
 import { BasketDetailComponent } from './basket-detail/basket-detail.component';
 
 const routes: Routes = [
-  {path: 'produits', component: ProductsComponent},
+  {path: 'produits/tous', component: ProductsComponent},
   {path: 'produits/:categorie', component: ProductsComponent},
   {path: 'produits/:categorie/:idProduct', component: ProductDetailComponent},
   {path: 'panier', component: BasketDetailComponent},
