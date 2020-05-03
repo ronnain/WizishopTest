@@ -12,21 +12,21 @@ import { SUtils } from '../utils';
 })
 export class BasketDetailComponent extends BasketUpdate implements OnInit {
 
-
-  basketQuantity;
-  basketTotal;
-  basket: Product[];
-
   constructor(public basketService: BasketService) {
     super(basketService);
   }
 
   ngOnInit(): void {
-    this.getBasket();
+    this.updateBasket();
 
     // Subscribe to event when the user update the basket
     this.basketService.removeProductBasketEvent.subscribe((data:string) => {
-      this.getBasket();
+      this.updateBasket();
+    });
+
+    this.basketService.updateBasketEvent.subscribe((data:string) => {
+      this.getBasketQuantity();
+      this.getTotal();
     });
   }
 
@@ -40,10 +40,6 @@ export class BasketDetailComponent extends BasketUpdate implements OnInit {
     if(product.quantity < 1) {
       this.products.splice(index, 1);
     }
-  }
-
-  getBasket() {
-    this.products = this.basketService.getBasket();
   }
 
   buy() {

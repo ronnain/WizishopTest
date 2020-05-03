@@ -49,7 +49,7 @@
           <p class="nav-link">Votre panier est vide</p>
         </div>
         <ul class="navbasket">
-          <li class="nav-item" *ngFor="let item of basket; let index = index;">
+          <li class="nav-item" *ngFor="let item of products; let index = index;">
             <a routerLink="/produits/{{item.categories[0]}}/{{item.id}}" class="nav-link" (click)="loadProduct(item.id)">
               <span class="menuItemName">{{item.name}}</span> x{{item.quantity}} : {{item.quantity * item.price}} €
             </a>

@@ -52,14 +52,14 @@
 
         <div class="card text-center">
           <div class="card-body">
-            <p class="card-text">5 produit(s) sélectionné(s)</p>
+            <p class="card-text">{{basketQuantity ? basketQuantity : 0}} produit(s) sélectionné(s)</p>
           </div>
           <div class="card-footer">
-            <p class="totalBasket">Total : 500€</p>
+            <p class="totalBasket">Total : {{basketTotal ? basketTotal : 0}} €</p>
           </div>
         </div>
 
-        <button mat-raised-button color="primary" class="btnBuy" (click)="buy()">Payer</button>
+        <button mat-raised-button color="primary" class="btnBuy" (click)="buy()" [disabled]="!basketTotal">Payer</button>
       </div>
     </div>
 </div>

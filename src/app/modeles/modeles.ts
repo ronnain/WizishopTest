@@ -7,6 +7,9 @@ export class BasketUpdate {
     products: Product[];
     product: Product;
 
+    basketQuantity: number;
+    basketTotal: number;
+
     constructor(public basketService: BasketService) {
     }
 
@@ -35,5 +38,23 @@ export class BasketUpdate {
         this.product.quantity = undefined;
       }
       this.basketService.removeProductByIndex(index);
+    }
+
+    updateBasket() {
+      this.getBasketQuantity();
+      this.getBasket();
+      this.getTotal();
+    }
+
+    getBasketQuantity() {
+      this.basketQuantity = this.basketService.getQuantitySelected();
+    }
+
+    getTotal() {
+      this.basketTotal =  this.basketService.getTotalBasket();
+    }
+
+    getBasket() {
+      this.products = this.basketService.getBasket();
     }
 }
