@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Output, EventEmitter } from '@angular/core';
 import { Product, ProductDetail } from '../interfaces';
 import { PRODUCTS, PROUCTS_DETAILS } from '../mock/products';
 import { BasketService } from './basket.service';
@@ -10,6 +10,9 @@ import { SUtils } from '../utils';
 export class ProductsService {
 
   products : Product[];
+
+  @Output()
+  loadProductPage = new EventEmitter<string>();
 
   constructor(private basketService: BasketService) { }
 
@@ -30,7 +33,11 @@ export class ProductsService {
 
   // To do: observables
   getProductById(id: number): Product {
-    return SUtils.findElemInList('id', id, PRODUCTS);
+    // when the page is displayed after refresh
+    if (!this.products) {
+      this.getAllProducts();
+    }
+    return SUtils.findElemInList('id', id, this.products);
   }
 
   getProductDetail(idProduct: number): ProductDetail {

@@ -1,6 +1,7 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit, HostListener, Output, EventEmitter } from '@angular/core';
 import { BasketService } from '../services/basket.service';
 import { Product } from '../interfaces';
+import { ProductsService } from '../services/products.service';
 
 @Component({
   selector: 'app-header',
@@ -16,7 +17,7 @@ export class HeaderComponent implements OnInit {
   bigScreen;
   bigScreenLimit = 768;
 
-  constructor(private basketService: BasketService) { }
+  constructor(private basketService: BasketService, private productsService: ProductsService) { }
 
   ngOnInit() {
     this.bigScreen = screen.width >= this.bigScreenLimit;
@@ -47,6 +48,10 @@ export class HeaderComponent implements OnInit {
 
   getTotal() {
     this.basketTotal =  this.basketService.getTotalBasket();
+  }
+
+  loadProduct(productId: number) {
+    this.productsService.loadProductPage.emit(productId.toString());
   }
 
 }

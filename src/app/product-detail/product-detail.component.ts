@@ -21,7 +21,21 @@ export class ProductDetailComponent extends BasketUpdate implements OnInit {
   }
 
   ngOnInit(): void {
-    this.idProduct = parseInt(this._Activatedroute.snapshot.paramMap.get("idProduct"), 10);
+    console.log("init")
+    this.loadProduct();
+    //When the user load a product and the component has already loaded
+    this.productsService.loadProductPage.subscribe((productId:string) => {
+      console.log("event")
+      const idProduct = parseInt(productId, 10);
+      if(idProduct !== this.idProduct){
+        this.loadProduct(idProduct);
+      }
+    });
+  }
+
+  loadProduct(productId?:number) {
+    this.idProduct = productId ? productId : parseInt(this._Activatedroute.snapshot.paramMap.get("idProduct"), 10);
+    console.log("laodProduct", this.idProduct)
     this.product = this.productsService.getProductById(this.idProduct);
     this.productDetail = this.productsService.getProductDetail(this.idProduct);
   }
