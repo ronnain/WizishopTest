@@ -3,16 +3,16 @@
     <h1>Votre Panier</h1>
 </div>
 
-<div class="container">
+<div class="container basket alignCenter">
     <div class="row">
       <div class="col-md">
         <h2>Liste de vos produits</h2>
-        <div class="alert alert-primary" role="alert" *ngIf="!basket || !basket.length">
+        <div class="alert alert-primary" role="alert" *ngIf="!products || !products.length">
             Votre panier est vide.
         </div>
 
-        <mat-accordion class="extendPanel" *ngIf="basket && basket.length">
-            <mat-expansion-panel *ngFor="let item of basket; ; let index = index;">
+        <mat-accordion class="extendPanel" *ngIf="products && products.length">
+            <mat-expansion-panel *ngFor="let item of products; ; let index = index;">
               <mat-expansion-panel-header >
                 <mat-panel-title>
                   {{item.name}}
@@ -34,7 +34,10 @@
                         <button mat-icon-button aria-label="Ajouter" (click)="addProduct(index)">
                             <mat-icon>add</mat-icon>
                         </button>
-                        <p class="block spaceTotal">Total : <span class="totalProduct">{{item.quantity * item.price}}</span> €</p>
+                        <button mat-icon-button aria-label="Enlever tous les exemplaires de ce produit" class="delProductBtn" (click)="removeAllSameProduct(index)">
+                          <mat-icon>delete</mat-icon>
+                        </button>
+                        <p class="spaceTotal">Total : <span class="totalProduct">{{item.quantity * item.price}}</span> €</p>
                     </div>
                 </div>
               </div>
@@ -46,6 +49,17 @@
 
       <div class="col-md justify-content-center spaceChild">
         <h2>RÉCAPITULATIF</h2>
+
+        <div class="card text-center">
+          <div class="card-body">
+            <p class="card-text">5 produit(s) sélectionné(s)</p>
+          </div>
+          <div class="card-footer">
+            <p class="totalBasket">Total : 500€</p>
+          </div>
+        </div>
+
+        <button mat-raised-button color="primary" class="btnBuy" (click)="buy()">Payer</button>
       </div>
     </div>
 </div>

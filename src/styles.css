@@ -17,12 +17,6 @@ a {
     border: none;
 }
 
-.card-header{
-    color: white;
-    background-color: midnightblue;
-    margin-bottom: 1em;
-}
-
 .center{
     margin:auto;
 }
@@ -130,6 +124,11 @@ img{
 
 .basketComment {
     color: limegreen;
+}
+
+
+.delProductBtn {
+    color: red;
 }
 
 .backgroundFeather {

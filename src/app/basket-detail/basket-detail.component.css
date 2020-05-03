@@ -2,3 +2,24 @@
     display: block;
     margin-top: 1rem;
 }
+
+.basket .col-md {
+    margin-top: 1.5rem;
+}
+
+.totalBasket {
+    font-size: 1.5rem;
+    margin: 10px;
+    font-weight: 500;
+}
+
+.btnBuy {
+    margin-top: 0.5rem;
+    width: 100%;
+    font-size: 1.5rem;
+    padding: 6px 0;
+}
+
+.row {
+    margin-bottom: 3rem;
+}

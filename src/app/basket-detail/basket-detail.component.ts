@@ -3,6 +3,7 @@ import { ProductsService } from '../services/products.service';
 import { BasketService } from '../services/basket.service';
 import { Product, ProductDetail } from '../interfaces';
 import { BasketUpdate } from '../modeles/modeles';
+import { SUtils } from '../utils';
 
 @Component({
   selector: 'app-basket-detail',
@@ -21,30 +22,31 @@ export class BasketDetailComponent extends BasketUpdate implements OnInit {
   }
 
   ngOnInit(): void {
-    this.updateBasket();
+    this.getBasket();
+
     // Subscribe to event when the user update the basket
-    this.basketService.updateBasketEvent.subscribe((data:string) => {
-      this.getBasketQuantity();
-      this.getTotal();
+    this.basketService.removeProductBasketEvent.subscribe((data:string) => {
+      this.getBasket();
     });
   }
 
-  updateBasket() {
-    this.basket = this.basketService.getBasket();
-    this.getBasketQuantity();
-    this.getBasket();
-    this.getTotal();
-  }
+  // Polymorphisme, remove product from products array when the quantity is < 1
+  removeProduct(index?: number) {
+    const product = (typeof index === 'number') ? this.products[index]: this.product;
+    product.quantity--;
+    this.basketService.reduceProductFromBasket(product);
 
-  getBasketQuantity() {
-    this.basketQuantity = this.basketService.getQuantitySelected();
+    // remove the products
+    if(product.quantity < 1) {
+      this.products.splice(index, 1);
+    }
   }
 
   getBasket() {
-    this.basket = this.basketService.getBasket();
+    this.products = this.basketService.getBasket();
   }
 
-  getTotal() {
-    this.basketTotal = this.basketService.getTotalBasket();
+  buy() {
+    alert("Merci pour votre achat !");
   }
 }

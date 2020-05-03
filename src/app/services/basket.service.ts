@@ -8,6 +8,7 @@ import { SUtils } from '../utils';
 export class BasketService {
 
   @Output() updateBasketEvent = new EventEmitter<string>();
+  @Output() removeProductBasketEvent = new EventEmitter<string>();
 
   constructor() { }
 
@@ -65,8 +66,7 @@ export class BasketService {
 
     // remove the product from the basket
     if (basket.length && product.quantity < 1) {
-        const indexProduct = basket.findIndex(item => item.id === product.id);
-        basket.splice(indexProduct, 1);
+        this.removeProductById(product.id, basket);
     } else {
         // decrease the quantity
         const foundProduct = SUtils.findElemInList('id', product.id, basket);
@@ -75,6 +75,19 @@ export class BasketService {
         }
     }
     this.updateBasket(basket);
+  }
+
+  removeProductById(productId: number, basket: Product[]) {
+    const indexProduct = basket.findIndex(item => item.id === productId);
+    basket.splice(indexProduct, 1);
+    this.updateBasket(basket);
+    this.removeProductBasketEvent.emit(productId.toString());
+  }
+
+  removeProductByIndex(indexProduct: number) {
+    const basket = this.getBasket();
+    const productId = basket[indexProduct].id;
+    this.removeProductById(productId, basket);
   }
 
   updateBasket(basket: Product[]) {

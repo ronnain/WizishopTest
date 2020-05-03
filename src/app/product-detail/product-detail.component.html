@@ -21,6 +21,9 @@
               </button>
             </div>
             <div *ngIf="product.quantity" class="inlineChild">
+              <button mat-icon-button aria-label="Enlever tous les exemplaires de ce produit" class="delProductBtn" (click)="removeAllSameProduct()">
+                <mat-icon>delete</mat-icon>
+              </button>
               <button mat-icon-button aria-label="Diminuer" (click)="removeProduct()">
                 <mat-icon>remove</mat-icon>
               </button>
