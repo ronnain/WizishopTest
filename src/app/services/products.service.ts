@@ -18,7 +18,8 @@ export class ProductsService {
 
   // To do: observables
   getAllProducts(): Product[] {
-    this.products = PRODUCTS;
+    // make a copy of PRODUCTS array with nested object
+    this.products = JSON.parse(JSON.stringify(PRODUCTS));
     this.getBasketUpdate();
     return this.products;
   }
@@ -44,5 +45,21 @@ export class ProductsService {
         foundProduct.quantity = item.quantity;
       }
     }
+  }
+
+  getProductsByCategories(categories: string[]){
+    const allProducts: Product[] = this.getAllProducts();
+    const searchProducts: Product[] = [];
+    for (const product of allProducts) {
+      if(!product.categories) {
+        continue;
+      }
+      for(const category of product.categories) {
+        if (categories.indexOf(category) !== -1) {
+          searchProducts.push(product);
+        }
+      }
+    }
+    return searchProducts;
   }
 }

@@ -14,31 +14,31 @@ export const PRODUCTS : Product[] = [
     {
         id: 1,
         name: "Oreiller blanc",
-        price: 75.00,
+        price: 65.00,
         desc: smallText,
         categories: ["oreillers"],
         imgPath: "assets/oreiller.jpg"
     },
     {
         id: 2,
-        name: "Oreiller blanc",
-        price: 75.00,
+        name: "Oreiller noir",
+        price: 73.00,
         desc: smallText,
         categories: ["oreillers"],
         imgPath: "assets/oreiller.jpg"
     },
     {
         id: 3,
-        name: "Oreiller blanc",
-        price: 75.00,
+        name: "Oreiller rose",
+        price: 22.00,
         desc: smallText,
         categories: ["oreillers"],
         imgPath: "assets/oreiller.jpg"
     },
     {
         id: 4,
-        name: "Oreiller blanc",
-        price: 75.00,
+        name: "Oreiller violet",
+        price: 99.00,
         desc: smallText,
         categories: ["oreillers"],
         imgPath: "assets/oreiller.jpg"
@@ -53,16 +53,16 @@ export const PRODUCTS : Product[] = [
     },
     {
         id: 6,
-        name: "Lit sobre",
-        price: 325.00,
+        name: "Lit rose",
+        price: 99.00,
         desc: smallText,
         categories: ["lits"],
         imgPath: "assets/lit.jpg"
     },
     {
         id: 7,
-        name: "Lit sobre",
-        price: 325.00,
+        name: "Lit vert",
+        price: 455.00,
         desc: smallText,
         categories: ["lits"],
         imgPath: "assets/lit.jpg"
@@ -70,7 +70,7 @@ export const PRODUCTS : Product[] = [
     {
         id: 8,
         name: "Huile du dodo",
-        price: 23.00,
+        price: 21.50,
         desc: smallText,
         categories: ["huiles"],
         imgPath: "assets/huile.jpg"
@@ -78,7 +78,7 @@ export const PRODUCTS : Product[] = [
     {
         id: 9,
         name: "Huile du dodo",
-        price: 20.00,
+        price: 23.35,
         desc: smallText,
         categories: ["huiles"],
         imgPath: "assets/huile.jpg"

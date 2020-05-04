@@ -86,6 +86,7 @@ export class BasketService {
 
   removeProductByIndex(indexProduct: number) {
     const basket = this.getBasket();
+    basket[indexProduct].quantity = 0;
     const productId = basket[indexProduct].id;
     this.removeProductById(productId, basket);
   }

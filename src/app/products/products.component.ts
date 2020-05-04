@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '../services/products.service';
-import { Product } from '../interfaces';
 import { BasketService } from '../services/basket.service';
 import { BasketUpdate } from '../modeles/modeles';
 import { SUtils } from '../utils';
+import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-products',
@@ -12,16 +13,42 @@ import { SUtils } from '../utils';
 })
 export class ProductsComponent extends BasketUpdate implements OnInit  {
 
-  constructor(private productsService: ProductsService, public basketService: BasketService) {
+  category;
+  subRouter;
+  subRemoveBasket;
+
+  constructor(private _Activatedroute:ActivatedRoute, private router: Router, private productsService: ProductsService, public basketService: BasketService) {
     super(basketService);
   }
 
   ngOnInit(): void {
-    this.products = this.productsService.getAllProducts();
+    this.loadProducts();
 
-    this.basketService.removeProductBasketEvent.subscribe((productId:string) => {
+    this.subRemoveBasket = this.basketService.removeProductBasketEvent.subscribe((productId:string) => {
       const foundProduct = SUtils.findElemInList('id', parseInt(productId,10), this.products);
       foundProduct.quantity = undefined;
     });
+
+    // detect url change
+    this.subRouter = this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd)
+    ).subscribe((event: NavigationEnd) => {
+      this.loadProducts();
+    });
+  }
+
+  loadProducts() {
+    this.category = this._Activatedroute.snapshot.paramMap.get("category");
+
+    if(this.category === "tous") {
+      this.products = this.productsService.getAllProducts();
+    } else {
+      this.products = this.productsService.getProductsByCategories([this.category]);
+    }
+  }
+
+  ngOnDestroy() {
+    this.subRouter.unsubscribe();
+    this.subRemoveBasket.unsubscribe();
   }
 }

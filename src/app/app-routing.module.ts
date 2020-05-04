@@ -7,14 +7,12 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
 import { BasketDetailComponent } from './basket-detail/basket-detail.component';
 
 const routes: Routes = [
-  {path: 'produits/tous', component: ProductsComponent},
-  {path: 'produits/:categorie', component: ProductsComponent},
-  {path: 'produits/:categorie/:idProduct', component: ProductDetailComponent},
+  {path: 'produits/:category', component: ProductsComponent},
+  {path: 'produits/:category/:idProduct', component: ProductDetailComponent},
   {path: 'panier', component: BasketDetailComponent},
   {path: '', component: HomeComponent },
   {path: '**', redirectTo: '', pathMatch: 'full'},
-  {path: 'not-found', redirectTo: '', pathMatch: 'full'},
-  //{path: 'articles/:articleName', component: ArticleComponent},
+  {path: 'not-found', redirectTo: '', pathMatch: 'full'}
 ];
 
 
