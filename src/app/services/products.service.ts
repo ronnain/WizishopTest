@@ -47,7 +47,7 @@ export class ProductsService {
     }
   }
 
-  getProductsByCategories(categories: string[]){
+  getProductsByCategories(categories: string[]): Product[] {
     const allProducts: Product[] = this.getAllProducts();
     const searchProducts: Product[] = [];
     for (const product of allProducts) {
@@ -61,5 +61,11 @@ export class ProductsService {
       }
     }
     return searchProducts;
+  }
+
+  getProductsByCategoriesPrices(categories: string[], minPrice: number, maxPrice: number): Product[]{
+    const searchProducts: Product[] = this.getProductsByCategories(categories);
+    return searchProducts.filter(product =>
+      product.price >= minPrice &&  product.price <= maxPrice);
   }
 }

@@ -1,0 +1,84 @@
+.cardProduct {
+    width: 18rem;
+    margin: 0.5rem;
+    border: none;
+}
+
+.cardProduct:hover {
+    -webkit-box-shadow: 1px 3px 12px -2px rgba(186,186,186,1);
+    -moz-box-shadow: 1px 3px 12px -2px rgba(186,186,186,1);
+    box-shadow: 1px 3px 12px -2px rgba(186,186,186,1);
+}
+
+.rightAlign {
+    width: 100%;
+    text-align: right;
+}
+
+.card-title {
+    font-size: 2rem;
+    font-weight: 300;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.categoriesCheckBox {
+    display: block;
+}
+
+.fiterCol h2,.fiterCol h3 {
+    margin-bottom: 0;
+}
+
+.categoriesBox {
+    margin-top: 1rem;
+}
+
+// We need to use ::ng-deep to overcome view encapsulation
+::ng-deep {
+    .custom-slider .ng5-slider .ng5-slider-bar {
+      background: #cfcfcf;
+      height: 2px;
+    }
+    .custom-slider .ng5-slider .ng5-slider-selection {
+      background: #ff4081;
+    }
+
+    .custom-slider .ng5-slider .ng5-slider-pointer {
+      width: 8px;
+      height: 16px;
+      top: auto; /* to remove the default positioning */
+      bottom: 0;
+      background-color: #333;
+      border-top-left-radius: 3px;
+      border-top-right-radius: 3px;
+    }
+
+    .custom-slider .ng5-slider .ng5-slider-pointer:after {
+      display: none;
+    }
+
+    .custom-slider .ng5-slider .ng5-slider-bubble {
+      bottom: 14px;
+    }
+
+    .custom-slider .ng5-slider .ng5-slider-limit {
+      font-weight: bold;
+      color: #ff4081;
+    }
+
+    .custom-slider .ng5-slider .ng5-slider-tick {
+      width: 1px;
+      height: 10px;
+      margin-left: 4px;
+      border-radius: 0;
+      background: #cfcfcf;
+      top: -1px;
+    }
+
+    .custom-slider .ng5-slider .ng5-slider-tick.ng5-slider-selected {
+      background: #ff4081;
+    }
+  }

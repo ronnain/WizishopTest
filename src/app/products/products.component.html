@@ -1,7 +1,15 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-lg-2">
-      One of three columns
+    <div class="col-lg-2 fiterCol">
+      <h2>Fitres</h2>
+      <mat-divider></mat-divider>
+      <div class="categoriesBox"  *ngIf="categoriesFilter">
+        <mat-checkbox class="categoriesCheckBox" *ngFor="let cartegory of objectKeys(categoriesFilter)" [(ngModel)]="categoriesFilter[cartegory]" (change)="filterCategoriesUpdate()">{{cartegory | titlecase}}</mat-checkbox>
+      </div>
+      <h3>Prix</h3>
+      <div class="custom-slider">
+        <ng5-slider [(value)]="value" [(highValue)]="highValue" [options]="options" (mouseup)="updatePriceFilter()"></ng5-slider>
+      </div>
     </div>
 
     <div class="col-lg d-flex p-2 flex-wrap justify-content-center">

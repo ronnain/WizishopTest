@@ -34,6 +34,7 @@ import {MatSortModule} from '@angular/material/sort';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatBadgeModule} from '@angular/material/badge';
 import {MatButtonModule} from '@angular/material/button';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 @NgModule({
   imports: [
@@ -65,7 +66,8 @@ import {MatButtonModule} from '@angular/material/button';
     MatToolbarModule,
     MatTooltipModule,
     MatBadgeModule,
-    MatButtonModule
+    MatButtonModule,
+    MatCheckboxModule
   ],
   exports: [
     A11yModule,
@@ -102,7 +104,8 @@ import {MatButtonModule} from '@angular/material/button';
     MatSortModule,
     MatPaginatorModule,
     MatBadgeModule,
-    MatButtonModule
+    MatButtonModule,
+    MatCheckboxModule
   ]
 })
 export class MaterialModule  {}
