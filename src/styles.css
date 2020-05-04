@@ -143,24 +143,24 @@ img{
 
 @media screen and (max-width: 575px) and (orientation : portrait) {
     .backgroundFeather {
-        background-image: url('https://sommeilprofond.fr/sleeping-bs/img/white_feather/m.jpg');
+        background-image: url('assets/white_feather/m.jpg');
     }
 }
 @media screen and (min-width: 576px) and (max-width: 767px) and (orientation : portrait) {
     .backgroundFeather {
-        background-image: url('https://sommeilprofond.fr/sleeping-bs/img/white_feather/xm.jpg');
+        background-image: url('assets/white_feather/xm.jpg');
     }
 }
 
 @media screen and (min-width: 768px) and (max-width: 991px) and (orientation : portrait) {
     .backgroundFeather {
-        background-image: url('https://sommeilprofond.fr/sleeping-bs/img/white_feather/l.jpg');
+        background-image: url('assets/white_feather/l.jpg');
     }
 }
 
 @media screen and (min-width: 992px) and (orientation : portrait) {
     .backgroundFeather {
-        background-image: url('https://sommeilprofond.fr/sleeping-bs/img/white_feather/xl.jpg');
+        background-image: url('assets/white_feather/xl.jpg');
     }
 }
 
@@ -168,23 +168,23 @@ img{
 
 @media screen and (max-width: 575px) and (orientation : landscape) {
     .backgroundFeather {
-        background-image: url('https://sommeilprofond.fr/sleeping-bs/img/white_feather/m.jpg');
+        background-image: url('assets/white_feather/m.jpg');
     }
 }
 @media screen and (min-width: 576px) and (max-width: 767px) and (orientation : landscape) {
     .backgroundFeather {
-        background-image: url('https://sommeilprofond.fr/sleeping-bs/img/white_feather/xm.jpg');
+        background-image: url('assets/white_feather/xm.jpg');
     }
 }
 
 @media screen and (min-width: 768px) and (max-width: 991px) and (orientation : landscape) {
     .backgroundFeather {
-        background-image: url('https://sommeilprofond.fr/sleeping-bs/img/white_feather/l.jpg');
+        background-image: url('assets/white_feather/l.jpg');
     }
 }
 
 @media screen and (min-width: 992px) and (orientation : landscape) {
     .backgroundFeather {
-        background-image: url('https://sommeilprofond.fr/sleeping-bs/img/white_feather/xl.jpg');
+        background-image: url('assets/white_feather/xl.jpg');
     }
 }
