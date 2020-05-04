@@ -38,4 +38,8 @@ export class ProductDetailComponent extends Basket implements OnInit {
     this.productDetail = this.productsService.getProductDetail(this.idProduct);
   }
 
+  // Avoid js multiplication conflict with decimals
+  getTotalPrice(quantity: number, price: number) {
+    return (quantity *100) * (price *100) / 10000;
+  }
 }
