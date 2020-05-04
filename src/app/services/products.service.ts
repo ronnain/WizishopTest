@@ -16,7 +16,7 @@ export class ProductsService {
 
   constructor(private basketService: BasketService) { }
 
-  // To do: observables
+  // To do, when linked to a backend: use an observable
   getAllProducts(): Product[] {
     // make a copy of PRODUCTS array with nested object
     this.products = JSON.parse(JSON.stringify(PRODUCTS));
@@ -24,7 +24,7 @@ export class ProductsService {
     return this.products;
   }
 
-  // To do: observables
+  // To do, when linked to a backend: use an observable
   getProductById(id: number): Product {
     // Call getAllProcts, will update the products quantity with the current basket
     this.getAllProducts();
