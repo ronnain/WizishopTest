@@ -18,7 +18,7 @@
                   {{item.name}}
                 </mat-panel-title>
                 <mat-panel-description>
-                   {{item.quantity}} pièces / Total : {{item.quantity * item.price}} €
+                   {{item.quantity}} pièces / Total : {{getTotalPrice(item.quantity, item.price)}} €
                 </mat-panel-description>
               </mat-expansion-panel-header>
               <div class="container-fluid">
@@ -37,7 +37,7 @@
                         <button mat-icon-button aria-label="Enlever tous les exemplaires de ce produit" class="delProductBtn" (click)="removeAllSameProduct(index)">
                           <mat-icon>delete</mat-icon>
                         </button>
-                        <p class="spaceTotal">Total : <span class="totalProduct">{{item.quantity * item.price}}</span> €</p>
+                        <p class="spaceTotal">Total : <span class="totalProduct">{{getTotalPrice(item.quantity, item.price)}}</span> €</p>
                     </div>
                 </div>
               </div>

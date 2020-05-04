@@ -37,4 +37,9 @@ export class HeaderComponent extends Basket implements OnInit {
     this.productsService.loadProductPage.emit(productId.toString());
   }
 
+  // Avoid js multiplication conflict with decimals
+  getTotalPrice(quantity: number, price: number) {
+    return (quantity *100) * (price *100) / 10000;
+  }
+
 }

@@ -51,7 +51,7 @@
         <ul class="navbasket">
           <li class="nav-item" *ngFor="let item of products; let index = index;">
             <a routerLink="/produits/{{item.categories[0]}}/{{item.id}}" class="nav-link" (click)="loadProduct(item.id)">
-              <span class="menuItemName">{{item.name}}</span> x{{item.quantity}} : {{item.quantity * item.price}} €
+              <span class="menuItemName">{{item.name}}</span> x{{item.quantity}} : {{getTotalPrice(item.quantity, item.price)}} €
             </a>
           </li>
         </ul>

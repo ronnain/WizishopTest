@@ -64,6 +64,7 @@ export class ProductsComponent extends Basket implements OnInit  {
     this.setFilters();
   }
 
+  // show only categories filter for "tous" rout
   setFilters() {
     if(this.category === "tous") {
       this.createCategoriesFilter();
@@ -93,8 +94,8 @@ export class ProductsComponent extends Basket implements OnInit  {
     this.products.forEach(product => {
       productPrices.push(product.price);
     });
-    this.value = Math.min(...productPrices);
-    this.highValue = Math.max(...productPrices);
+    this.value = Math.floor(Math.min(...productPrices));
+    this.highValue = Math.ceil(Math.max(...productPrices));
   }
 
   filterCategoriesUpdate() {
@@ -120,6 +121,11 @@ export class ProductsComponent extends Basket implements OnInit  {
       selectedCategories = this.getCategoriesSelected();
     }
     this.products = this.productsService.getProductsByCategoriesPrices(selectedCategories, this.value, this.highValue);
+  }
+
+  // Avoid js multiplication conflict with decimals
+  getTotalPrice(quantity: number, price: number) {
+    return (quantity *100) * (price *100) / 10000;
   }
 
   ngOnDestroy() {

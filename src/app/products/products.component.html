@@ -20,7 +20,7 @@
           <p class="card-title">{{product.name}}</p>
           <p class="card-text">{{product.desc}}</p>
           <div class="alignCenter">
-            <p class="price">{{product.price | currency:'EUR'}}</p>
+            <p class="price">{{product.price}}€</p>
           </div>
 
           <div class="rightAlign">
@@ -37,7 +37,7 @@
               <button mat-icon-button aria-label="Ajouter" (click)="addProduct(index)">
                 <mat-icon>add</mat-icon>
               </button>
-              <p>Total : <span class="totalProduct">{{product.quantity * product.price}}</span> €</p>
+              <p>Total : <span class="totalProduct">{{getTotalPrice(product.quantity, product.price)}}</span> €</p>
             </div>
           </div>
 

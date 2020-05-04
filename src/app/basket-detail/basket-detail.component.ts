@@ -42,6 +42,11 @@ export class BasketDetailComponent extends Basket implements OnInit {
     }
   }
 
+  // Avoid js multiplication conflict with decimals
+  getTotalPrice(quantity: number, price: number) {
+    return (quantity *100) * (price *100) / 10000;
+  }
+
   buy() {
     alert("Merci pour votre achat !");
   }
