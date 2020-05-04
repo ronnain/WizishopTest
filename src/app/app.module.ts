@@ -2,7 +2,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Ng5SliderModule } from 'ng5-slider';
+import { NgxSliderModule } from '@m0t0r/ngx-slider';
 
 import { AppComponent } from './app.component';
 import { MaterialModule } from './material.module';
@@ -31,7 +31,7 @@ import { BasketDetailComponent } from './basket-detail/basket-detail.component';
     AppRoutingModule,
     MaterialModule,
     FormsModule,
-    Ng5SliderModule
+    NgxSliderModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -5,7 +5,7 @@ import { Basket } from '../modeles/basket';
 import { SUtils } from '../utils';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
-import { Options } from 'ng5-slider';
+import { Options } from '@m0t0r/ngx-slider';
 import { Subscription } from 'rxjs';
 
 @Component({
