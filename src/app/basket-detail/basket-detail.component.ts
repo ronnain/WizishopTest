@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '../services/products.service';
 import { BasketService } from '../services/basket.service';
 import { Product, ProductDetail } from '../interfaces';
-import { BasketUpdate } from '../modeles/modeles';
+import { Basket } from '../modeles/basket';
 import { SUtils } from '../utils';
 
 @Component({
@@ -10,7 +10,7 @@ import { SUtils } from '../utils';
   templateUrl: './basket-detail.component.html',
   styleUrls: ['./basket-detail.component.css']
 })
-export class BasketDetailComponent extends BasketUpdate implements OnInit {
+export class BasketDetailComponent extends Basket implements OnInit {
 
   constructor(public basketService: BasketService) {
     super(basketService);

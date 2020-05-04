@@ -2,7 +2,7 @@ import { BasketService } from '../services/basket.service';
 import { Product } from '../interfaces';
 
 
-export class BasketUpdate {
+export class Basket {
 
     products: Product[];
     product: Product;

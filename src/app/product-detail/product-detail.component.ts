@@ -3,14 +3,14 @@ import { ActivatedRoute } from '@angular/router';
 import { Product, ProductDetail } from '../interfaces';
 import { ProductsService } from '../services/products.service';
 import { BasketService } from '../services/basket.service';
-import { BasketUpdate } from '../modeles/modeles';
+import { Basket } from '../modeles/basket';
 
 @Component({
   selector: 'app-product-detail',
   templateUrl: './product-detail.component.html',
   styleUrls: ['./product-detail.component.css']
 })
-export class ProductDetailComponent extends BasketUpdate implements OnInit {
+export class ProductDetailComponent extends Basket implements OnInit {
 
   idProduct;
   product: Product;

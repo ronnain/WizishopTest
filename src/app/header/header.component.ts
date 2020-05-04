@@ -2,14 +2,14 @@ import { Component, OnInit, HostListener, Output, EventEmitter } from '@angular/
 import { BasketService } from '../services/basket.service';
 import { Product } from '../interfaces';
 import { ProductsService } from '../services/products.service';
-import { BasketUpdate } from '../modeles/modeles';
+import { Basket } from '../modeles/basket';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent extends BasketUpdate implements OnInit {
+export class HeaderComponent extends Basket implements OnInit {
 
   bigScreen;
   bigScreenLimit = 768;

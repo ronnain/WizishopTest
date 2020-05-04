@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '../services/products.service';
 import { BasketService } from '../services/basket.service';
-import { BasketUpdate } from '../modeles/modeles';
+import { Basket } from '../modeles/basket';
 import { SUtils } from '../utils';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
@@ -11,7 +11,7 @@ import { filter } from 'rxjs/operators';
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.css']
 })
-export class ProductsComponent extends BasketUpdate implements OnInit  {
+export class ProductsComponent extends Basket implements OnInit  {
 
   category;
   subRouter;
