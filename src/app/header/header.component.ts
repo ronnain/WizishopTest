@@ -1,8 +1,8 @@
 import { Component, OnInit, HostListener, Output, EventEmitter } from '@angular/core';
 import { BasketService } from '../services/basket.service';
-import { Product } from '../interfaces';
 import { ProductsService } from '../services/products.service';
 import { Basket } from '../modeles/basket';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -14,6 +14,8 @@ export class HeaderComponent extends Basket implements OnInit {
   bigScreen;
   bigScreenLimit = 768;
 
+  subRemoveBasket:Subscription;
+
   constructor(public basketService: BasketService, private productsService: ProductsService) {
     super(basketService);
   }
@@ -23,7 +25,7 @@ export class HeaderComponent extends Basket implements OnInit {
     this.updateBasket();
 
     // Subscribe to event when the user update the basket
-    this.basketService.updateBasketEvent.subscribe((data:string) => {
+    this.subRemoveBasket = this.basketService.updateBasketEvent.subscribe((data:string) => {
       this.updateBasket();
     });
   }
@@ -40,6 +42,10 @@ export class HeaderComponent extends Basket implements OnInit {
   // Avoid js multiplication conflict with decimals
   getTotalPrice(quantity: number, price: number) {
     return (quantity *100) * (price *100) / 10000;
+  }
+
+  ngOnDestroy() {
+    this.subRemoveBasket.unsubscribe();
   }
 
 }

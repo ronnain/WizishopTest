@@ -44,7 +44,7 @@
             </mat-expansion-panel>
         </mat-accordion>
 
-
+        <button mat-raised-button color="warn" class="btnBuy" (click)="cleanBasket()" *ngIf="products && products.length">Vider le Panier</button>
       </div>
 
       <div class="col-md justify-content-center spaceChild">

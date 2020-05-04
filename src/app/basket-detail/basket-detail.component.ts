@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductsService } from '../services/products.service';
 import { BasketService } from '../services/basket.service';
-import { Product, ProductDetail } from '../interfaces';
 import { Basket } from '../modeles/basket';
-import { SUtils } from '../utils';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-basket-detail',
@@ -11,6 +9,9 @@ import { SUtils } from '../utils';
   styleUrls: ['./basket-detail.component.css']
 })
 export class BasketDetailComponent extends Basket implements OnInit {
+
+  subRemoveBasket: Subscription;
+  subUpdateBasket: Subscription;
 
   constructor(public basketService: BasketService) {
     super(basketService);
@@ -20,11 +21,11 @@ export class BasketDetailComponent extends Basket implements OnInit {
     this.updateBasket();
 
     // Subscribe to event when the user update the basket
-    this.basketService.removeProductBasketEvent.subscribe((data:string) => {
+    this.subRemoveBasket = this.basketService.removeProductBasketEvent.subscribe((data:string) => {
       this.updateBasket();
     });
 
-    this.basketService.updateBasketEvent.subscribe((data:string) => {
+    this.subUpdateBasket = this.basketService.updateBasketEvent.subscribe((data:string) => {
       this.getBasketQuantity();
       this.getTotal();
     });
@@ -49,5 +50,18 @@ export class BasketDetailComponent extends Basket implements OnInit {
 
   buy() {
     alert("Merci pour votre achat !");
+  }
+
+  cleanBasket() {
+    if(!confirm("Êtes-vous sûre de vouloir vider entièrement votre panier ?")){
+      return;
+    }
+    this.products =  undefined;
+    this.basketService.removeAllProducts();
+  }
+
+  ngOnDestroy() {
+    this.subRemoveBasket.unsubscribe();
+    this.subUpdateBasket.unsubscribe();
   }
 }

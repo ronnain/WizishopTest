@@ -6,6 +6,7 @@ import { SUtils } from '../utils';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { Options } from 'ng5-slider';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-products',
@@ -15,8 +16,8 @@ import { Options } from 'ng5-slider';
 export class ProductsComponent extends Basket implements OnInit  {
 
   category;
-  subRouter;
-  subRemoveBasket;
+  subRouter: Subscription;
+  subRemoveBasket:Subscription;
 
   categoriesFilter;
 

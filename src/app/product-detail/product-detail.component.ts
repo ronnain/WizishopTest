@@ -4,6 +4,7 @@ import { Product, ProductDetail } from '../interfaces';
 import { ProductsService } from '../services/products.service';
 import { BasketService } from '../services/basket.service';
 import { Basket } from '../modeles/basket';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-product-detail',
@@ -16,6 +17,8 @@ export class ProductDetailComponent extends Basket implements OnInit {
   product: Product;
   productDetail: ProductDetail;
 
+  subLoadProductPage: Subscription;
+
   constructor(private _Activatedroute:ActivatedRoute, private productsService: ProductsService, public basketService: BasketService) {
     super(basketService);
   }
@@ -24,7 +27,7 @@ export class ProductDetailComponent extends Basket implements OnInit {
     this.loadProduct();
 
     //Use when the user load a product and the component has already been loaded
-    this.productsService.loadProductPage.subscribe((productId:string) => {
+    this.subLoadProductPage = this.productsService.loadProductPage.subscribe((productId:string) => {
       const idProduct = parseInt(productId, 10);
       if(idProduct !== this.idProduct){
         this.loadProduct(idProduct);
@@ -41,5 +44,9 @@ export class ProductDetailComponent extends Basket implements OnInit {
   // Avoid js multiplication conflict with decimals
   getTotalPrice(quantity: number, price: number) {
     return (quantity *100) * (price *100) / 10000;
+  }
+
+  ngOnDestroy() {
+    this.subLoadProductPage.unsubscribe();
   }
 }

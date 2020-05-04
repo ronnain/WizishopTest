@@ -91,6 +91,11 @@ export class BasketService {
     this.removeProductById(productId, basket);
   }
 
+  removeAllProducts(){
+    localStorage.setItem('basket', JSON.stringify([]));
+    this.updateBasketEvent.emit();
+  }
+
   updateBasket(basket: Product[]) {
     localStorage.setItem('basket', JSON.stringify(basket));
     this.updateBasketEvent.emit();
