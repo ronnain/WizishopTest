@@ -7,19 +7,24 @@
       <img src="assets/logo/zzzLogo.png" alt="Logo ZZZ Sommeil Profond" width="50px" />
     </a>
 
-    <!-- Display only on small size -->
+    <!-- Display only on small size and smart phone -->
     <button mat-button [matMenuTriggerFor]="menu" *ngIf="!bigScreen">
       <span class="material-icons">menu</span>
     </button>
     <mat-menu #menu="matMenu" xPosition="before">
       <a routerLink="" class="nav-link">Accueil</a>
+      <button mat-menu-item [matMenuTriggerFor]="produits">Produits</button>
+      <a routerLink="panier" class="nav-link">Panier</a>
+    </mat-menu>
+
+    <mat-menu #produits="matMenu">
       <a routerLink="produits/oreillers" class="nav-link">Oreillers</a>
       <a routerLink="produits/lits" class="nav-link">Lits</a>
       <a routerLink="produits/huiles" class="nav-link">Huiles</a>
       <a routerLink="produits/tous" class="nav-link">Tous</a>
-      <a routerLink="panier" class="nav-link">Panier</a>
     </mat-menu>
 
+    <!-- Display for large screen -->
     <div id="bigScreenMenu" *ngIf="bigScreen">
       <ul class="nav">
         <li class="nav-item" routerLinkActive="active">
