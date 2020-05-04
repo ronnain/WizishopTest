@@ -115,7 +115,10 @@ export class ProductsComponent extends Basket implements OnInit  {
 
   // update product by price
   updatePriceFilter() {
-    const selectedCategories: string[] = this.getCategoriesSelected();
+    let selectedCategories: string[] = [this.category];
+    if(this.category === "tous") {
+      selectedCategories = this.getCategoriesSelected();
+    }
     this.products = this.productsService.getProductsByCategoriesPrices(selectedCategories, this.value, this.highValue);
   }
 
