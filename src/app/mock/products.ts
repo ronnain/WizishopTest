@@ -25,7 +25,7 @@ export const PRODUCTS : Product[] = [
         price: 73.00,
         desc: smallText,
         categories: ["oreillers"],
-        imgPath: "assets/oreiller.jpg"
+        imgPath: "assets/oreiller_noir.jpg"
     },
     {
         id: 3,
@@ -33,7 +33,7 @@ export const PRODUCTS : Product[] = [
         price: 22.00,
         desc: smallText,
         categories: ["oreillers"],
-        imgPath: "assets/oreiller.jpg"
+        imgPath: "assets/oreiller_rose.jpg"
     },
     {
         id: 4,
@@ -41,7 +41,7 @@ export const PRODUCTS : Product[] = [
         price: 99.00,
         desc: smallText,
         categories: ["oreillers"],
-        imgPath: "assets/oreiller.jpg"
+        imgPath: "assets/oreiller_violet.jpg"
     },
     {
         id: 5,
@@ -53,11 +53,11 @@ export const PRODUCTS : Product[] = [
     },
     {
         id: 6,
-        name: "Lit rose",
+        name: "Lit licorne",
         price: 99.00,
         desc: smallText,
         categories: ["lits"],
-        imgPath: "assets/lit.jpg"
+        imgPath: "assets/lit_licorne.jpg"
     },
     {
         id: 7,
@@ -65,11 +65,11 @@ export const PRODUCTS : Product[] = [
         price: 455.00,
         desc: smallText,
         categories: ["lits"],
-        imgPath: "assets/lit.jpg"
+        imgPath: "assets/lit_vert.jpg"
     },
     {
         id: 8,
-        name: "Huile du dodo",
+        name: "Huile pour dormir",
         price: 21.50,
         desc: smallText,
         categories: ["huiles"],
@@ -77,11 +77,19 @@ export const PRODUCTS : Product[] = [
     },
     {
         id: 9,
-        name: "Huile du dodo",
-        price: 23.35,
+        name: "4 Huiles essentiels",
+        price: 45.99,
         desc: smallText,
         categories: ["huiles"],
-        imgPath: "assets/huile.jpg"
+        imgPath: "assets/4_huiles.jpg"
+    },
+    {
+        id: 10,
+        name: "Huile bio",
+        price: 45.99,
+        desc: smallText,
+        categories: ["huiles"],
+        imgPath: "assets/huile_bio.jpg"
     }
 ]
 
@@ -137,6 +145,12 @@ export const PROUCTS_DETAILS : ProductDetail[] = [
     {
         id: 9,
         idProduct: 9,
+        detailDesc: bigtext,
+        technicalData: text,
+    },
+    {
+        id: 10,
+        idProduct: 10,
         detailDesc: bigtext,
         technicalData: text,
     }
