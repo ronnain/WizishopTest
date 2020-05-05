@@ -13,6 +13,10 @@ export class Basket {
     constructor(public basketService: BasketService) {
     }
 
+    /**
+     * Add a product in the basket
+     * @param index optional, index of the product in products array
+     */
     addProduct(index?: number) {
       const product = (typeof index === 'number') ? this.products[index]: this.product;
 
@@ -23,6 +27,10 @@ export class Basket {
       this.basketService.addProductToBasket(product);
     }
 
+    /**
+     * Reduce the quantity of the product in the basket
+     * @param index optional, index of the product in products array
+     */
     removeProduct(index?: number) {
       const product = (typeof index === 'number') ? this.products[index]: this.product;
 
@@ -40,10 +48,14 @@ export class Basket {
       this.basketService.removeProductByIndex(index);
     }
 
+
+    /**
+     * Get all the information from the basket
+     */
     updateBasket() {
       this.getBasketQuantity();
-      this.getBasket();
       this.getTotal();
+      this.getBasket();
     }
 
     getBasketQuantity() {

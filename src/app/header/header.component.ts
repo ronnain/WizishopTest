@@ -11,12 +11,13 @@ import { Subscription } from 'rxjs';
 })
 export class HeaderComponent extends Basket implements OnInit {
 
-  bigScreen;
+  bigScreen: boolean; // use to display short or large header
   bigScreenLimit = 768;
 
   subRemoveBasket:Subscription;
 
   constructor(public basketService: BasketService, private productsService: ProductsService) {
+    // call Basket constructor
     super(basketService);
   }
 
@@ -30,11 +31,13 @@ export class HeaderComponent extends Basket implements OnInit {
     });
   }
 
+  // test if the hearder should change when the window is resized
   @HostListener('window:resize', ['$event'])
     displaySize(event) {
      this.bigScreen = screen.width > this.bigScreenLimit;
   }
 
+  // Useful when the product-page component is already loaded and the user wants to load another product in product-page.
   loadProduct(productId: number) {
     this.productsService.loadProductPage.emit(productId.toString());
   }

@@ -7,7 +7,7 @@
       <img src="assets/logo/zzzLogo.png" alt="Logo ZZZ Sommeil Profond" width="50px" />
     </a>
 
-    <!-- Display only on small size and smart phone -->
+    <!-- Display only on small size (smart phone...) -->
     <button mat-button [matMenuTriggerFor]="menu" *ngIf="!bigScreen">
       <span class="material-icons">menu</span>
     </button>
@@ -24,7 +24,7 @@
       <button mat-menu-item routerLink="produits/tous">Tous</button>
     </mat-menu>
 
-    <!-- Display for large screen -->
+    <!-- Display for large screen (computer...)-->
     <div id="bigScreenMenu" *ngIf="bigScreen">
       <ul class="nav">
         <li class="nav-item" routerLinkActive="active">
@@ -41,8 +41,10 @@
         </li>
       </ul>
     </div>
+
+    <!-- Display basket icon -->
     <div class="basketMargin">
-      <button mat-button [matMenuTriggerFor]="basketMenu">
+      <button mat-button [matMenuTriggerFor]="basketMenu" class="basketMenu">
         <mat-icon [matBadge]="basketQuantity" matBadgePosition="above after" matBadgeColor="warn">
           <span class="material-icons">
             shopping_cart
@@ -50,6 +52,7 @@
         </mat-icon>
       </button>
 
+      <!-- Display the list of the products in the basket with the quantity and the total price -->
       <mat-menu #basketMenu="matMenu" xPosition="before" class="alignCenter">
         <div *ngIf="!basketQuantity">
           <p class="nav-link">Votre panier est vide</p>

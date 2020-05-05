@@ -11,12 +11,15 @@ export class ProductsService {
 
   products : Product[];
 
-  @Output()
-  loadProductPage = new EventEmitter<string>();
+  // Event when the user wants to load a product in product-detail
+  @Output() loadProductPage = new EventEmitter<string>();
 
   constructor(private basketService: BasketService) { }
 
-  // To do, when linked to a backend: use an observable
+  /**
+   * Retrieve all the products and merge with the current basket
+   * To do : when linked to a backend use observable
+   */
   getAllProducts(): Product[] {
     // make a copy of PRODUCTS array with nested object
     this.products = JSON.parse(JSON.stringify(PRODUCTS));
@@ -24,17 +27,29 @@ export class ProductsService {
     return this.products;
   }
 
-  // To do, when linked to a backend: use an observable
+  /**
+   * Retrieve a product and merge with the current basket
+   * To do : when linked to a backend use observable
+   */
   getProductById(id: number): Product {
     // Call getAllProcts, will update the products quantity with the current basket
     this.getAllProducts();
     return SUtils.findElemInList('id', id, this.products);
   }
 
+  /**
+   * Get the detail of a product
+   * To do : when linked to a backend use observable
+   * @param idProduct
+   */
   getProductDetail(idProduct: number): ProductDetail {
     return SUtils.findElemInList('idProduct', idProduct, PROUCTS_DETAILS);
   }
 
+  /**
+   * Update the products with the current basket
+   * @param idProduct
+   */
   getBasketUpdate() {
     const basket = this.basketService.getBasket();
 
@@ -47,6 +62,11 @@ export class ProductsService {
     }
   }
 
+  /**
+   * Retrieve all the products that merge the categories filter and merge with the current basket
+   * To do : when linked to a backend use observable
+   * @param categories
+   */
   getProductsByCategories(categories: string[]): Product[] {
     const allProducts: Product[] = this.getAllProducts();
     const searchProducts: Product[] = [];
@@ -63,6 +83,11 @@ export class ProductsService {
     return searchProducts;
   }
 
+  /**
+   * Retrieve all the products that merge the categories filter and price filter. Merge with the current basket
+   * To do : when linked to a backend use observable
+   * @param categories
+   */
   getProductsByCategoriesPrices(categories: string[], minPrice: number, maxPrice: number): Product[]{
     const searchProducts: Product[] = this.getProductsByCategories(categories);
     return searchProducts.filter(product =>

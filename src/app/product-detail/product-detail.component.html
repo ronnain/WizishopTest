@@ -5,16 +5,20 @@
 
 <div class="container-fluid">
     <div class="row">
+
+      <!-- Display the product image -->
       <div class="col-md">
         <img class="card-img-top pointer" [src]="product.imgPath" [alt]="product.name">
       </div>
 
+      <!-- Display the main information of the product, price, quantity selected, total -->
       <div class="col-md justify-content-center spaceChild">
         <div class="alignCenter">
           <p>{{product.desc}}</p>
           <p class="price">{{product.price | currency:'EUR'}}</p>
         </div>
         <div class="alignCenter">
+            <!-- Actions possible on the basket product -->
             <div *ngIf="!product.quantity">
               <button mat-mini-fab color="primary" aria-label="Ajouter au panier" (click)="addProduct()">
                 <mat-icon>add_shopping_cart</mat-icon>
@@ -38,7 +42,7 @@
           <p class="basketComment"><mat-icon>done</mat-icon> Déjà {{product.quantity}} dans votre panier.</p>
         </div>
 
-
+        <!-- Display expansion panel, with fiche technique, description -->
         <mat-accordion class="extendPanel">
           <mat-expansion-panel>
             <mat-expansion-panel-header>

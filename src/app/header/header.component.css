@@ -26,6 +26,6 @@ nav{
     padding-left: 0;
 }
 
-.smallMenu, .smallMenu button {
+.smallMenu, .smallMenu button, .basketMenu {
     outline: none;
 }

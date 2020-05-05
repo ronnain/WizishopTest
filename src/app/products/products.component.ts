@@ -15,15 +15,19 @@ import { Subscription } from 'rxjs';
 })
 export class ProductsComponent extends Basket implements OnInit  {
 
-  category;
   subRouter: Subscription;
   subRemoveBasket:Subscription;
 
-  categoriesFilter;
+  category; // parameter retrieve in the URL
+  // list of all the categories that can be filtered in "tous" category
+  // { 'lits' : true }
+  categoriesFilter: any;
 
-  // slider properties
+  // slider properties, use to filtered on the price
+  // init low value of the slider, keep the minimum value of all the products when they are loaded
   value: number = 40;
-  highValue: number = 60;
+  // init high value of the slider, keep the maximum value of all the products when they are loaded
+  highValue: number = 300;
   options: Options = {
     floor: 0,
     ceil: 500,
@@ -35,12 +39,14 @@ export class ProductsComponent extends Basket implements OnInit  {
   objectKeys = Object.keys;
 
   constructor(private _Activatedroute:ActivatedRoute, private router: Router, private productsService: ProductsService, public basketService: BasketService) {
+    // call Basket constructor
     super(basketService);
   }
 
   ngOnInit(): void {
     this.loadProducts();
 
+    // get event when a product is removed from the basket
     this.subRemoveBasket = this.basketService.removeProductBasketEvent.subscribe((productId:string) => {
       const foundProduct = SUtils.findElemInList('id', parseInt(productId,10), this.products);
       foundProduct.quantity = undefined;
@@ -54,6 +60,7 @@ export class ProductsComponent extends Basket implements OnInit  {
     });
   }
 
+  // Load the products according to the cateogries selected and set the appropriate filters
   loadProducts() {
     this.category = this._Activatedroute.snapshot.paramMap.get("category");
 
@@ -65,7 +72,8 @@ export class ProductsComponent extends Basket implements OnInit  {
     this.setFilters();
   }
 
-  // show only categories filter for "tous" rout
+  // show only "categories filter" for "tous" route
+  // always show price filter
   setFilters() {
     if(this.category === "tous") {
       this.createCategoriesFilter();
@@ -75,6 +83,7 @@ export class ProductsComponent extends Basket implements OnInit  {
     this.setPriceFilter();
   }
 
+  // get all the categories from the products displayed
   createCategoriesFilter() {
     this.categoriesFilter = {};
 
@@ -99,12 +108,14 @@ export class ProductsComponent extends Basket implements OnInit  {
     this.highValue = Math.ceil(Math.max(...productPrices));
   }
 
+  // when the user change the categories to display by the checkbox filter
   filterCategoriesUpdate() {
     const selectedCategories: string[] = this.getCategoriesSelected();
     this.products = this.productsService.getProductsByCategories(selectedCategories);
     this.setPriceFilter();
   }
 
+  // categories selected in filter area
   getCategoriesSelected(): string [] {
     const selectedCategories = [];
     for (const category in this.categoriesFilter) {

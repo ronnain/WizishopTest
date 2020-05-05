@@ -20,13 +20,14 @@ export class ProductDetailComponent extends Basket implements OnInit {
   subLoadProductPage: Subscription;
 
   constructor(private _Activatedroute:ActivatedRoute, private productsService: ProductsService, public basketService: BasketService) {
+    // call Basket constructor
     super(basketService);
   }
 
   ngOnInit(): void {
     this.loadProduct();
 
-    //Use when the user load a product and the component has already been loaded
+    //Use when the user wants to load another product and the component has already been loaded
     this.subLoadProductPage = this.productsService.loadProductPage.subscribe((productId:string) => {
       const idProduct = parseInt(productId, 10);
       if(idProduct !== this.idProduct){
@@ -35,6 +36,7 @@ export class ProductDetailComponent extends Basket implements OnInit {
     });
   }
 
+  // get all the information to display the product
   loadProduct(productId?:number) {
     this.idProduct = productId ? productId : parseInt(this._Activatedroute.snapshot.paramMap.get("idProduct"), 10);
     this.product = this.productsService.getProductById(this.idProduct);

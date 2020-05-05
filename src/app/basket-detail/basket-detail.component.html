@@ -4,6 +4,8 @@
 
 <div class="container basket alignCenter">
     <div class="row">
+
+      <!-- First column : basket -->
       <div class="col-md">
         <h2>Liste de vos produits</h2>
         <div class="alert alert-primary" role="alert" *ngIf="!products || !products.length">
@@ -25,6 +27,7 @@
                     <div class="col-5">
                         <img class="pointer" [src]="item.imgPath" [alt]="item.name" routerLink="/produits/{{item.categories[0]}}/{{item.id}}">
                     </div>
+                    <!-- Actions possible on the basket product -->
                     <div class="col inlineChild alignCenter">
                         <button mat-icon-button aria-label="Diminuer" (click)="removeProduct(index)">
                             <mat-icon>remove</mat-icon>
@@ -46,6 +49,7 @@
         <button mat-raised-button color="warn" class="btnBuy" (click)="cleanBasket()" *ngIf="products && products.length">Vider le Panier</button>
       </div>
 
+      <!-- Second column : Recap -->
       <div class="col-md justify-content-center spaceChild">
         <h2>RÉCAPITULATIF</h2>
 

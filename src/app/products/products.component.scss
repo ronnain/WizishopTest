@@ -38,6 +38,7 @@
     margin-top: 1rem;
 }
 
+// slider
 // We need to use ::ng-deep to overcome view encapsulation
 ::ng-deep {
     .custom-slider .ngx-slider .ngx-slider-bar {
@@ -51,7 +52,7 @@
     .custom-slider .ngx-slider .ngx-slider-pointer {
       width: 8px;
       height: 16px;
-      top: auto; /* to remove the default positioning */
+      top: auto;
       bottom: 0;
       background-color: #333;
       border-top-left-radius: 3px;

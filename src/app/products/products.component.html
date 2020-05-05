@@ -4,6 +4,8 @@
 </div>
 <div class="container-fluid">
   <div class="row">
+
+    <!-- Filters area -->
     <div class="col-lg-2 fiterCol">
       <h2>Fitres</h2>
       <mat-divider></mat-divider>
@@ -16,8 +18,10 @@
       </div>
     </div>
 
+    <!-- List of products -->
     <div class="col-lg d-flex p-2 flex-wrap justify-content-center">
 
+      <!-- Create a card for each products -->
       <div class="card cardProduct verticalAlignBottom" *ngFor="let product of products; let index = index;">
         <img class="card-img-top pointer" [src]="product.imgPath" [alt]="product.name" routerLink="/produits/{{product.categories[0]}}/{{product.id}}">
         <div class="card-body">
@@ -28,6 +32,7 @@
           </div>
 
           <div class="rightAlign">
+            <!-- Actions possible on the basket product -->
             <div *ngIf="!product.quantity">
               <button mat-mini-fab color="primary" aria-label="Ajouter au panier" (click)="addProduct(index)">
                 <mat-icon>add_shopping_cart</mat-icon>
