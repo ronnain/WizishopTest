@@ -11,17 +11,17 @@
     <button mat-button [matMenuTriggerFor]="menu" *ngIf="!bigScreen">
       <span class="material-icons">menu</span>
     </button>
-    <mat-menu #menu="matMenu" xPosition="before">
-      <a routerLink="" class="nav-link">Accueil</a>
+    <mat-menu #menu="matMenu" xPosition="before" class="smallMenu">
+      <button mat-menu-item routerLink="">Accueil</button>
       <button mat-menu-item [matMenuTriggerFor]="produits">Produits</button>
-      <a routerLink="panier" class="nav-link">Panier</a>
+      <button mat-menu-item routerLink="panier">Panier</button>
     </mat-menu>
 
-    <mat-menu #produits="matMenu">
-      <a routerLink="produits/oreillers" class="nav-link">Oreillers</a>
-      <a routerLink="produits/lits" class="nav-link">Lits</a>
-      <a routerLink="produits/huiles" class="nav-link">Huiles</a>
-      <a routerLink="produits/tous" class="nav-link">Tous</a>
+    <mat-menu #produits="matMenu" class="smallMenu">
+      <button mat-menu-item routerLink="produits/oreillers">Oreillers</button>
+      <button mat-menu-item routerLink="produits/lits">Lits</button>
+      <button mat-menu-item routerLink="produits/huiles"> Huiles</button>
+      <button mat-menu-item routerLink="produits/tous">Tous</button>
     </mat-menu>
 
     <!-- Display for large screen -->
