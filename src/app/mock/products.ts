@@ -86,7 +86,7 @@ export const PRODUCTS : Product[] = [
     {
         id: 10,
         name: "Huile bio",
-        price: 45.99,
+        price: 33.99,
         desc: smallText,
         categories: ["huiles"],
         imgPath: "assets/huile_bio.jpg"
